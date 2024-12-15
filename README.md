@@ -34,39 +34,56 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+1. Type the program in Quartus software.
+2. Compile and run the program.
+3. Generate the RTL schematic and save the logic diagram.
+4. Create nodes for inputs and outputs to generate the timing diagram.
+5. For different input combinations generate the timing diagram.
+
 
 **PROGRAM**
 
-/* JK FlipFlop
-```
-module jk(j, k, clk, rst, q);
-  input j, k, clk, rst;
-  output reg q;
+module jk_ff(q, qb,j,k,clock,reset);
+    input j,k,clock,reset;
+    output reg q, qb;
+	 
+always @ (posedge (clock))
 
-  always @(posedge clk or posedge rst) begin
-    if (rst)
-      q <= 0;
-    else if (j == 0 && k == 0)
-      q <= q;
-    else if (j == 0 && k == 1)
-      q <= 0;
-    else if (j == 1 && k == 0)
-      q <= 1;
-    else if (j == 1 && k == 1)
-      q <= ~q;
-  end
+
+    begin
+	   if(j == 0 && k == 0)
+		    begin
+			 q <= q;
+			 qb <= qb;
+			 end
+	   else if(j != k)
+		     begin
+			  q <= j;
+			  qb <= k;
+			  end
+		else if(j == 1 && k == 1)
+		     begin
+			  q <= ~q;
+			  qb <= ~qb;
+			  end
+	end
+end
 endmodule
-Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:24900415
-*/
+
+
+
+Developed by: Yokeshwaran A
+
+RegisterNumber: 24900415 */
 
 **RTL LOGIC FOR FLIPFLOPS**
-![image](https://github.com/user-attachments/assets/d7c44e68-3197-4913-a953-58f6a096cc9a)
 
+![image](https://github.com/23004513/JKFLIPFLOP-USING-IF-ELSE/assets/138973069/48cc0eb5-e90d-45bd-bb4e-000dcf05a796)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
-![image](https://github.com/user-attachments/assets/d7c44e68-3197-4913-a953-58f6a096cc9a)
+
+![image](https://github.com/23004513/JKFLIPFLOP-USING-IF-ELSE/assets/138973069/d4b06ea5-ea16-4979-8e0c-56e0bf0706b1)
 
 
 **RESULTS**
-Program for JK flipflops was verified in quartus using Verilog programming.
+Thus,the code executed successfully.
